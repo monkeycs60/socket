@@ -1,0 +1,30 @@
+# Ignore macOS system files
+.DS_Store
+
+# Ignore node_modules directory
+node_modules/
+
+# Ignore log files
+*.log
+
+# Ignore environment variable files
+.env
+
+# Ignore build directories
+dist/
+build/
+
+# Ignore temporary files
+*.tmp
+*.swp
+
+# Ignore coverage reports
+coverage/
+
+# Ignore IDE specific files
+.vscode/
+.idea/
+
+# Ignore OS generated files
+Thumbs.db
+Desktop.ini
