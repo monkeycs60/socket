@@ -23,10 +23,24 @@ const io = new Server(server, {
 
 app.use(express.json());
 
+let oldVersion = '1.0.0';
+
 app.post('/new-version', (req: Request, res: Response) => {
 	const newVersion = req.body.version;
-	io.emit('new-version', newVersion);
-	res.sendStatus(200);
+	const password = req.headers['x-password'];
+
+	if (password !== 'louislegrand') {
+		res.status(401).send('Unauthorized');
+		return;
+	}
+
+	if (newVersion > oldVersion) {
+		oldVersion = newVersion;
+		io.emit('new-version', newVersion);
+		res.sendStatus(200);
+	} else {
+		res.status(400).send('New version is not greater than the old version');
+	}
 });
 
 const port = process.env.PORT || 3000;
