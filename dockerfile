@@ -9,5 +9,4 @@ COPY . .
 
 EXPOSE 3000
 
-CMD ["node", "index.ts"]
-
+CMD ["npx", "tsx", "watch", "index.ts"]

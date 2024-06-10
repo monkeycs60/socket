@@ -1,10 +1,10 @@
-const express = require('express');
-const http = require('http');
-const cors = require('cors');
+import express from 'express';
+import http from 'http';
+import cors from 'cors';
+import { Server } from 'socket.io';
+
 const app = express();
 const server = http.createServer(app);
-
-const { Server } = require('socket.io');
 
 app.use(
 	cors({
@@ -40,6 +40,8 @@ app.post('/new-version', (req, res) => {
 		res.status(400).send('New version is not greater than the old version');
 	}
 });
+
+type toto = 'string';
 
 const port = process.env.PORT || 3000;
 server.listen(port, () => {
