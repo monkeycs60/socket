@@ -1,12 +1,10 @@
-import { Request, Response } from 'express';
-
 const express = require('express');
 const http = require('http');
 const cors = require('cors');
 const app = express();
 const server = http.createServer(app);
 
-import { Server } from 'socket.io';
+const { Server } = require('socket.io');
 
 app.use(
 	cors({
@@ -25,7 +23,7 @@ app.use(express.json());
 
 let oldVersion = '1.0.0';
 
-app.post('/new-version', (req: Request, res: Response) => {
+app.post('/new-version', (req, res) => {
 	const newVersion = req.body.version;
 	const password = req.headers['x-password'];
 
